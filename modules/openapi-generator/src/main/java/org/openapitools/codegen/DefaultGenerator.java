@@ -480,18 +480,20 @@ public class DefaultGenerator implements Generator {
 
                         }
                         if(entry.getKey() != null && idSets.contains(entry.getKey())){
-                            boolean shallAddTransient = false;
+                            boolean addTransient = false;
                             if(val.getExtensions() == null){
-                                shallAddTransient = true;
+                                addTransient = true;
                             } 
                             else{
                                 ArrayList<String> arrList =  (ArrayList<String>) val.getExtensions().get("x-setter-annotation");
-                                if( !arrList.contains("Id")){
-                                shallAddTransient = true;
+                                if( arrList != null && !arrList.contains("Id")){
+                                addTransient = true;
                                 }
                             }
-                            if (val.getExtensions().get("x-ignore-transient")=="true"){
-                                if(shallAddTransient)
+                            if (val.getExtensions() != null
+                                    && val.getExtensions().get("x-ignore-transient") != null
+                                    && val.getExtensions().get("x-ignore-transient") =="true") {
+                                if(addTransient)
                                     val.addExtension("x-setter-extra-annotation", "@Transient");
                             }
                         }
