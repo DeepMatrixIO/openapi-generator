@@ -490,11 +490,12 @@ public class DefaultGenerator implements Generator {
                                 addTransient = true;
                                 }
                             }
-                            if (val.getExtensions() != null
-                                    && val.getExtensions().get("x-ignore-transient") != null
-                                    && val.getExtensions().get("x-ignore-transient") =="true") {
-                                if(addTransient)
+                            if(addTransient) {
+                                if (!(val.getExtensions() != null
+                                        && val.getExtensions().get("x-ignore-transient") != null
+                                        && val.getExtensions().get("x-ignore-transient") == Boolean.TRUE)){
                                     val.addExtension("x-setter-extra-annotation", "@Transient");
+                                }
                             }
                         }
                     }

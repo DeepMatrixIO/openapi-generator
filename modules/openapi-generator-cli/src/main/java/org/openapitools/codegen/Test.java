@@ -17,7 +17,7 @@ public class Test {
 
 
         String specFlag = "-i";
-        String spec = "C:\\deepmatrix\\codegen\\new-data-service.yaml";
+        String spec = "C:\\bith\\sources\\data-oas\\data-service.yaml";
          String langFlag = "-g";
 
          String lang = "jaxrs-spec";
