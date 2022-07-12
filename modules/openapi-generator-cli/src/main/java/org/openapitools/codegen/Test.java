@@ -17,12 +17,12 @@ public class Test {
 
 
         String specFlag = "-i";
-        String spec = "C:\\bith\\sources\\data-oas\\data-service.yaml";
+        String spec = "C:\\deepmatrix\\data-oas\\data-service.yaml";
          String langFlag = "-g";
 
          String lang = "jaxrs-spec";
          String outputDirFlag = "-o"; 
-         String outputDir = "C:\\deepmatrix\\codegen\\codegeneg2";
+         String outputDir = "C:\\deepmatrix\\codegen\\codegeneg3";
 
 
         CodegenConfigurator configurator = new CodegenConfigurator();

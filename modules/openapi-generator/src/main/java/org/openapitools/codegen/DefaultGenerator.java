@@ -446,8 +446,8 @@ public class DefaultGenerator implements Generator {
                 if(val.getExtensions() != null && val.getExtensions().get("x-setter-annotation") != null){
                     ArrayList<String> arrList =  (ArrayList<String>) val.getExtensions().get("x-setter-annotation");
                         if( arrList.contains("Id")){
-                        idSets.add(entry.getKey());
-                        schema.addExtension("x-extra-annotation", "@MappedSuperclass");
+                            idSets.add(entry.getKey());
+                            schema.addExtension("x-extra-annotation", "@MappedSuperclass");
                         }
                     }        
             }
@@ -474,10 +474,8 @@ public class DefaultGenerator implements Generator {
                 if(hasMappedSuperClass){
                     for(Map.Entry<String, Schema> entry : propMap.entrySet()) {
                         Schema val = entry.getValue();
-                        if(val.getType() != null && val.getType().equals("array")){
-                            // if(hasMappedSuperClass)
+                        if(val.getType() != null && (val.getType().equals("array") || val.getType().equals("object"))){
                             val.addExtension("x-setter-extra-annotation", "@Transient");
-
                         }
                         if(entry.getKey() != null && idSets.contains(entry.getKey())){
                             boolean addTransient = false;
@@ -530,6 +528,10 @@ public class DefaultGenerator implements Generator {
                         LOGGER.info("Model {} not generated since it's an alias to array (without property) and `generateAliasAsModel` is set to false (default)", name);
                         continue;
                     }
+                }
+
+                if(name.equalsIgnoreCase("Organization")) {
+                    int xx = 1;
                 }
 
                 Map<String, Schema> schemaMap = new HashMap<>();
