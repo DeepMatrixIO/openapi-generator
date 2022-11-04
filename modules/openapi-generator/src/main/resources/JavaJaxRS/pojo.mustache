@@ -89,9 +89,6 @@ public class {{classname}} {{#parent}}extends {{{.}}}{{/parent}} {{#vendorExtens
   {{/maximum}}
    * @return {{name}}
    **/
- {{#vendorExtensions.x-extra-annotation}}
-  {{{vendorExtensions.x-extra-annotation}}}
-  {{/vendorExtensions.x-extra-annotation}}
   {{#jackson}}
   @JsonProperty(value = "{{baseName}}"{{#isReadOnly}}, access = JsonProperty.Access.READ_ONLY{{/isReadOnly}}{{#isWriteOnly}}, access = JsonProperty.Access.WRITE_ONLY{{/isWriteOnly}})
   {{/jackson}}
@@ -100,9 +97,8 @@ public class {{classname}} {{#parent}}extends {{{.}}}{{/parent}} {{#vendorExtens
   public {{{datatypeWithEnum}}} {{getter}}() {
     return {{name}};
   }
-
-  {{#vendorExtensions.x-setter-extra-annotation}}{{{vendorExtensions.x-setter-extra-annotation}}}
-  {{/vendorExtensions.x-setter-extra-annotation}}public void {{setter}}({{{datatypeWithEnum}}} {{name}}) {
+  
+  public void {{setter}}({{{datatypeWithEnum}}} {{name}}) {
     this.{{name}} = {{name}};
   }
 

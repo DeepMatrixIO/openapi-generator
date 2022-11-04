@@ -1,30 +1,5 @@
 {
-	"folders": [
-		{
-			"name": "openapi-generator",
-			"path": "."
-		},
-		{
-			"name": "openapi-generator-cli",
-			"path": "modules/openapi-generator-cli"
-		},
-		{
-			"name": "openapi-generator-core",
-			"path": "modules/openapi-generator-core"
-		},
-		{
-			"name": "openapi-generator-gradle-plugin",
-			"path": "modules/openapi-generator-gradle-plugin"
-		},
-		{
-			"name": "openapi-generator-maven-plugin",
-			"path": "modules/openapi-generator-maven-plugin"
-		},
-		{
-			"name": "openapi-generator-online",
-			"path": "modules/openapi-generator-online"
-		},
-	],
+	"folders": [],
 	"settings": {
 		"editor.formatOnType": true,
 		"editor.linkedEditing": true,
