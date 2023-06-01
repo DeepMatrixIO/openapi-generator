@@ -142,10 +142,10 @@ Class | Method | HTTP request | Description
  - [Petstore::File](docs/File.md)
  - [Petstore::FileSchemaTestClass](docs/FileSchemaTestClass.md)
  - [Petstore::Foo](docs/Foo.md)
+ - [Petstore::FooGetDefaultResponse](docs/FooGetDefaultResponse.md)
  - [Petstore::FormatTest](docs/FormatTest.md)
  - [Petstore::HasOnlyReadOnly](docs/HasOnlyReadOnly.md)
  - [Petstore::HealthCheckResult](docs/HealthCheckResult.md)
- - [Petstore::InlineResponseDefault](docs/InlineResponseDefault.md)
  - [Petstore::List](docs/List.md)
  - [Petstore::MapTest](docs/MapTest.md)
  - [Petstore::MixedPropertiesAndAdditionalPropertiesClass](docs/MixedPropertiesAndAdditionalPropertiesClass.md)
@@ -173,6 +173,17 @@ Class | Method | HTTP request | Description
 ## Documentation for Authorization
 
 
+Authentication schemes defined for the API:
+### petstore_auth
+
+
+- **Type**: OAuth
+- **Flow**: implicit
+- **Authorization URL**: http://petstore.swagger.io/api/oauth/dialog
+- **Scopes**: 
+  - write:pets: modify pets in your account
+  - read:pets: read your pets
+
 ### api_key
 
 
@@ -187,24 +198,15 @@ Class | Method | HTTP request | Description
 - **API key parameter name**: api_key_query
 - **Location**: URL query string
 
-### bearer_test
-
-- **Type**: Bearer authentication (JWT)
-
 ### http_basic_test
 
 - **Type**: HTTP basic authentication
 
+### bearer_test
+
+- **Type**: Bearer authentication (JWT)
+
 ### http_signature_test
 
-
-### petstore_auth
-
-
-- **Type**: OAuth
-- **Flow**: implicit
-- **Authorization URL**: http://petstore.swagger.io/api/oauth/dialog
-- **Scopes**: 
-  - write:pets: modify pets in your account
-  - read:pets: read your pets
+- **Type**: HTTP signature authentication
 

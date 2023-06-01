@@ -123,10 +123,10 @@ Class | Method | HTTP request | Description
  - [EnumTest](doc//EnumTest.md)
  - [FileSchemaTestClass](doc//FileSchemaTestClass.md)
  - [Foo](doc//Foo.md)
+ - [FooGetDefaultResponse](doc//FooGetDefaultResponse.md)
  - [FormatTest](doc//FormatTest.md)
  - [HasOnlyReadOnly](doc//HasOnlyReadOnly.md)
  - [HealthCheckResult](doc//HealthCheckResult.md)
- - [InlineResponseDefault](doc//InlineResponseDefault.md)
  - [MapTest](doc//MapTest.md)
  - [MixedPropertiesAndAdditionalPropertiesClass](doc//MixedPropertiesAndAdditionalPropertiesClass.md)
  - [Model200Response](doc//Model200Response.md)
@@ -156,30 +156,8 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 
-## api_key
-
-- **Type**: API key
-- **API key parameter name**: api_key
-- **Location**: HTTP header
-
-## api_key_query
-
-- **Type**: API key
-- **API key parameter name**: api_key_query
-- **Location**: URL query string
-
-## bearer_test
-
-- **Type**: HTTP Bearer authentication
-
-## http_basic_test
-
-- **Type**: HTTP Basic authentication
-
-## http_signature_test
-
-
-## petstore_auth
+Authentication schemes defined for the API:
+### petstore_auth
 
 - **Type**: OAuth
 - **Flow**: implicit
@@ -187,6 +165,30 @@ Class | Method | HTTP request | Description
 - **Scopes**: 
  - **write:pets**: modify pets in your account
  - **read:pets**: read your pets
+
+### api_key
+
+- **Type**: API key
+- **API key parameter name**: api_key
+- **Location**: HTTP header
+
+### api_key_query
+
+- **Type**: API key
+- **API key parameter name**: api_key_query
+- **Location**: URL query string
+
+### http_basic_test
+
+- **Type**: HTTP Basic authentication
+
+### bearer_test
+
+- **Type**: HTTP Bearer authentication
+
+### http_signature_test
+
+- **Type**: HTTP signature authentication
 
 
 ## Author

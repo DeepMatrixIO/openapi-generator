@@ -171,10 +171,10 @@ Class | Method | HTTP request | Description
  - [Model.File](docs/File.md)
  - [Model.FileSchemaTestClass](docs/FileSchemaTestClass.md)
  - [Model.Foo](docs/Foo.md)
+ - [Model.FooGetDefaultResponse](docs/FooGetDefaultResponse.md)
  - [Model.FormatTest](docs/FormatTest.md)
  - [Model.HasOnlyReadOnly](docs/HasOnlyReadOnly.md)
  - [Model.HealthCheckResult](docs/HealthCheckResult.md)
- - [Model.InlineResponseDefault](docs/InlineResponseDefault.md)
  - [Model.List](docs/List.md)
  - [Model.MapTest](docs/MapTest.md)
  - [Model.MixedPropertiesAndAdditionalPropertiesClass](docs/MixedPropertiesAndAdditionalPropertiesClass.md)
@@ -200,43 +200,13 @@ Class | Method | HTTP request | Description
  - [Model.User](docs/User.md)
 
 
+<a id="documentation-for-authorization"></a>
 ## Documentation for Authorization
 
 
-### api_key
-
-- **Type**: API key
-
-- **API key parameter name**: api_key
-- **Location**: HTTP header
-
-
-### api_key_query
-
-- **Type**: API key
-
-- **API key parameter name**: api_key_query
-- **Location**: URL query string
-
-
-### bearer_test
-
-
-- **Type**: HTTP bearer authentication
-
-
-### http_basic_test
-
-
-- **Type**: HTTP basic authentication
-
-
-### http_signature_test
-
-
-
+Authentication schemes defined for the API:
+<a id="petstore_auth"></a>
 ### petstore_auth
-
 
 - **Type**: OAuth
 - **Flow**: implicit
@@ -244,4 +214,33 @@ Class | Method | HTTP request | Description
 - **Scopes**: 
   - write:pets: modify pets in your account
   - read:pets: read your pets
+
+<a id="api_key"></a>
+### api_key
+
+- **Type**: API key
+- **API key parameter name**: api_key
+- **Location**: HTTP header
+
+<a id="api_key_query"></a>
+### api_key_query
+
+- **Type**: API key
+- **API key parameter name**: api_key_query
+- **Location**: URL query string
+
+<a id="http_basic_test"></a>
+### http_basic_test
+
+- **Type**: HTTP basic authentication
+
+<a id="bearer_test"></a>
+### bearer_test
+
+- **Type**: HTTP bearer authentication
+
+<a id="http_signature_test"></a>
+### http_signature_test
+
+- **Type**: HTTP signature authentication
 

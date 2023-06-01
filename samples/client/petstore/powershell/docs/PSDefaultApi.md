@@ -7,9 +7,9 @@ Method | HTTP request | Description
 [**Invoke-PSFooGet**](PSDefaultApi.md#Invoke-PSFooGet) | **GET** /foo | 
 
 
-<a name="Invoke-PSFooGet"></a>
+<a id="Invoke-PSFooGet"></a>
 # **Invoke-PSFooGet**
-> InlineResponseDefault Invoke-PSFooGet<br>
+> FooGetDefaultResponse Invoke-PSFooGet<br>
 
 
 
@@ -29,7 +29,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponseDefault**](InlineResponseDefault.md) (PSCustomObject)
+[**FooGetDefaultResponse**](FooGetDefaultResponse.md) (PSCustomObject)
 
 ### Authorization
 
