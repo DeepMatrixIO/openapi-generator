@@ -90,9 +90,9 @@
       <version>${joda-version}</version>
     </dependency>
     <dependency>
-      <groupId>javax.annotation</groupId>
-      <artifactId>javax.annotation-api</artifactId>
-      <version>${javax.annotation-api-version}</version>
+      <groupId>{{javaxPackage}}.annotation</groupId>
+      <artifactId>{{javaxPackage}}.annotation-api</artifactId>
+      <version>${annotation-api-version}</version>
     </dependency>
     {{#useSwaggerAnnotations}}
     <dependency>
@@ -147,17 +147,17 @@
 {{/useBeanValidation}}
   </dependencies>
   <properties>
-    <java.version>1.8</java.version>
+    <java.version>{{#useJakartaEe}}17{{/useJakartaEe}}{{^useJakartaEe}}1.8{{/useJakartaEe}}</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jackson-version>2.9.9</jackson-version>
     <junit-version>4.13.2</junit-version>
     <joda-version>2.10.13</joda-version>
-    <javax.annotation-api-version>1.3.2</javax.annotation-api-version>
+    <annotation-api-version>{{#useJakartaEe}}2.1.1{{/useJakartaEe}}{{^useJakartaEe}}1.3.2{{/useJakartaEe}}</annotation-api-version>
 {{#useBeanValidation}}
-    <beanvalidation-version>2.0.2</beanvalidation-version>
+    <beanvalidation-version>{{#useJakartaEe}}3.0.2{{/useJakartaEe}}{{^useJakartaEe}}2.0.2{{/useJakartaEe}}</beanvalidation-version>
 {{/useBeanValidation}}
-    <jakarta.ws.rs-version>2.1.6</jakarta.ws.rs-version>
+    <jakarta.ws.rs-version>{{#useJakartaEe}}3.1.0{{/useJakartaEe}}{{^useJakartaEe}}2.1.6{{/useJakartaEe}}</jakarta.ws.rs-version>
   </properties>
 </project>

@@ -38,3 +38,27 @@ It will create a jar file in a folder
 ```sh
 java -jar C:\deepmatrix\codegen\openapi-generator\modules\openapi-generator-cli\target\openapi-generator-cli.jar generate -i C:\deepmatrix\data-oas\data-service.yaml -g  jaxrs-spec --library=quarkus --additional-properties=interfaceOnly=true,useSwaggerAnnotations=false,dateLibrary=java8,apiPackage=io.deepmatrix.service.api,modelPackage=io.deepmatrix.service.model  -o C:\deepmatrix\codegen\codegeneg1
 ```
+
+---
+
+### Jakarta EE vs Java EE namespace
+
+The `jaxrs-spec` generator emits **`jakarta.*`** imports by default (Hibernate 6 /
+Jakarta Persistence 3, Quarkus 3, Jakarta Bean Validation 3, JAX-RS 3). This affects:
+
+| Generated code | Package |
+| --- | --- |
+| JPA annotations (`@Id`, `@Column`, `@Transient`, `@MappedSuperclass`, `@GeneratedValue`) | `jakarta.persistence.*` |
+| Bean validation (`@NotNull`, `@Size`, `@Valid`, ...) | `jakarta.validation.*` |
+| JAX-RS (`@Path`, `@GET`, `Response`, ...) | `jakarta.ws.rs.*` |
+| `@Generated` | `jakarta.annotation.Generated` |
+
+To go back to the legacy `javax.*` namespace (Hibernate 5 / Quarkus 2), add
+`useJakartaEe=false` to `--additional-properties`:
+
+```sh
+--additional-properties=interfaceOnly=true,useSwaggerAnnotations=false,dateLibrary=java8,useJakartaEe=false,apiPackage=io.deepmatrix.service.api,modelPackage=io.deepmatrix.service.model
+```
+
+Note: `org.hibernate.annotations.GenericGenerator` stays on `org.hibernate.*` in both
+modes — only the Java/Jakarta EE specification packages move.

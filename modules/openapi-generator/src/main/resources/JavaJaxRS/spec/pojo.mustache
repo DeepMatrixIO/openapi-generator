@@ -6,11 +6,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Transient;
+import {{javaxPackage}}.persistence.GeneratedValue;
+import {{javaxPackage}}.persistence.GenerationType;
+import {{javaxPackage}}.persistence.Id;
+import {{javaxPackage}}.persistence.MappedSuperclass;
+import {{javaxPackage}}.persistence.Transient;
 
 {{#discriminator}}{{>typeInfoAnnotation}}{{/discriminator}}{{#description}}/**
  * {{.}}

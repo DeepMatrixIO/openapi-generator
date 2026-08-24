@@ -33,6 +33,14 @@ public class JavaJAXRSSpecServerCodegen extends AbstractJavaJAXRSServerCodegen {
     public static final String USE_SWAGGER_ANNOTATIONS = "useSwaggerAnnotations";
     public static final String OPEN_API_SPEC_FILE_LOCATION = "openApiSpecFileLocation";
     public static final String GENERATE_BUILDERS = "generateBuilders";
+    public static final String USE_JAKARTA_EE = "useJakartaEe";
+
+    /**
+     * Template variable holding the root package of the EE annotations (jakarta or javax).
+     */
+    public static final String JAVAX_PACKAGE = "javaxPackage";
+    private static final String JAKARTA_ROOT_PACKAGE = "jakarta";
+    private static final String JAVAX_ROOT_PACKAGE = "javax";
 
     public static final String QUARKUS_LIBRARY = "quarkus";
     public static final String THORNTAIL_LIBRARY = "thorntail";
@@ -46,6 +54,8 @@ public class JavaJAXRSSpecServerCodegen extends AbstractJavaJAXRSServerCodegen {
     private boolean generateBuilders = false;
     private boolean useSwaggerAnnotations = true;
     private boolean useJackson = false;
+    // Deepmatrix: default to the Jakarta EE namespace (Hibernate 6 / Quarkus 3 and later)
+    private boolean useJakartaEe = true;
     private String openApiSpecFileLocation = "src/main/openapi/openapi.yaml";
 
     public JavaJAXRSSpecServerCodegen() {
@@ -103,6 +113,10 @@ public class JavaJAXRSSpecServerCodegen extends AbstractJavaJAXRSServerCodegen {
         cliOptions.add(CliOption.newBoolean(USE_SWAGGER_ANNOTATIONS, "Whether to generate Swagger annotations.", useSwaggerAnnotations));
         cliOptions.add(CliOption.newString(OPEN_API_SPEC_FILE_LOCATION, "Location where the file containing the spec will be generated in the output folder. No file generated when set to null or empty string."));
         cliOptions.add(CliOption.newBoolean(SUPPORT_ASYNC, "Wrap responses in CompletionStage type, allowing asynchronous computation (requires JAX-RS 2.1).", supportAsync));
+        cliOptions.add(CliOption.newBoolean(USE_JAKARTA_EE, "Whether to use the Jakarta EE namespace (jakarta.*) instead of the legacy Java EE one (javax.*) in the generated code. Set to false to keep generating javax.* imports.", useJakartaEe));
+
+        // make the template variable available even before processOpts() runs
+        additionalProperties.put(JAVAX_PACKAGE, JAKARTA_ROOT_PACKAGE);
     }
 
     @Override
@@ -156,6 +170,12 @@ public class JavaJAXRSSpecServerCodegen extends AbstractJavaJAXRSServerCodegen {
             openApiSpecFileLocation = "src/main/webapp/META-INF/openapi.yaml";
         }
         additionalProperties.put(OPEN_API_SPEC_FILE_LOCATION, openApiSpecFileLocation);
+
+        if (additionalProperties.containsKey(USE_JAKARTA_EE)) {
+            useJakartaEe = Boolean.parseBoolean(additionalProperties.get(USE_JAKARTA_EE).toString());
+        }
+        writePropertyBack(USE_JAKARTA_EE, useJakartaEe);
+        additionalProperties.put(JAVAX_PACKAGE, useJakartaEe ? JAKARTA_ROOT_PACKAGE : JAVAX_ROOT_PACKAGE);
 
         useJackson = convertPropertyToBoolean(JACKSON);
 

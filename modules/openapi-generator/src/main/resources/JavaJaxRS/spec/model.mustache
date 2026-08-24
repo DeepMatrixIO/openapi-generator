@@ -6,11 +6,11 @@ package {{package}};
 import java.io.Serializable;
 {{/serializableModel}}
 {{#useBeanValidation}}
-import javax.validation.constraints.*;
-import javax.validation.Valid;
+import {{javaxPackage}}.validation.constraints.*;
+import {{javaxPackage}}.validation.Valid;
 {{/useBeanValidation}}
 import org.hibernate.annotations.GenericGenerator;
-import javax.persistence.Column;
+import {{javaxPackage}}.persistence.Column;
 
 {{#models}}
 {{#model}}
